@@ -15,6 +15,12 @@
                 <th></th>
             </tr>
         </thead>
+
+        <form method="post" action="forms/">
+            Codigo: <input type="text" name="codigo" placeholder="Ingrese código de la nueva habitación">
+            <button type="submit">
+        </form>
+
         <tbody>
             <tr>
                 <?php
