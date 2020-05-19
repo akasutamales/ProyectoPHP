@@ -1,6 +1,6 @@
 <?php
     
-    include_once dirname(__FILE__).'/../config/config.php';
+    include_once '../../config/config.php';
     class DB{
         
         private $connection;
@@ -15,39 +15,13 @@
             }
         }
 
-        
-        /*
-        public function selectPersonas($query){
-            $this->connect();
-            
+        public function query($query){
             $resultado = mysqli_query($this->connection, $query);
-
-            $personas = [];
-                    
-            while( $fila = mysqli_fetch_array($resultado) ){
-                    $persona = new Persona($fila['Cedula'],$fila['Nombre'],$fila['Apellido'],$fila['Correo'],$fila['Edad']);
-                    array_push( $personas, $persona);
-            }
-
-            $this->close();
-
-            return $personas;
-        }
-        */
-
-        public function query($sql){
-            $this->connect();
-            $resultado = mysqli_query($this->connection, $query);
-            $this->close();
-            return resultado;
+            return $resultado;
         }
 
         public function close(){
             mysqli_close($this->connection);
-        }
-            
-    }
-
-    // $persona = new Persona("123","Daniel","Beltran", "dan@gmail.com", 21);
-    
+        }            
+    } 
 ?>
