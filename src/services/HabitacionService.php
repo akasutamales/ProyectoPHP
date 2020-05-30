@@ -37,10 +37,10 @@
             return $habitacion;
         }
 
-        public function create($cedula,$nombre,$apellido,$correo,$edad){
+        public function create($codigo){
         
-            $sql = "INSERT INTO Personas(Cedula, Nombre, Apellido ,Correo, Edad) 
-            values ('$cedula','$nombre','$apellido', '$correo',$edad)";
+            $sql = "INSERT INTO Habitaciones(codigo) 
+            values ('$codigo')";
 
             $db = new DB();
             $db->connect();
@@ -50,11 +50,11 @@
             return $exito;
         }
 
-        public function update($cedula,$nombre,$apellido,$correo,$edad){
+        public function update($id, $codigo){
            
-            $sql = "UPDATE Personas
-                    SET Nombre = '$nombre', Apellido = '$apellido', Correo = '$correo', Edad = $edad
-                    WHERE Cedula = '$cedula'; ";
+            $sql = "UPDATE Habitaciones
+                    SET codigo = '$codigo'
+                    WHERE id = $id; ";
             
             $db = new DB();
             $db->connect();
@@ -63,8 +63,8 @@
 
             return $exito;
         }
-        public function delete($cedula){
-            $sql = "DELETE FROM Personas where Cedula='$cedula';";
+        public function delete($id){
+            $sql = "DELETE FROM Habitaciones where id=$id;";
             
             $db = new DB();          
             $db->connect();
