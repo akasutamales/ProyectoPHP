@@ -11,26 +11,28 @@
         <thead class="thead-light">
             <tr>
                 <th>Codigo</th>
-                <th>Camas</th>
-                <th></th>
             </tr>
         </thead>
 
         <form method="post" action="forms/">
             Codigo: <input type="text" name="codigo" placeholder="Ingrese código de la nueva habitación">
-            <button type="submit">
+            <input type="submit" value="Agregar">
         </form>
 
         <tbody>
             <tr>
                 <?php
-                    include_once '../services/HabitacionService.php';
+                    include_once '../../services/HabitacionService.php';
                     $servicioHabitacion = new HabitacionService();
+                    $str_datos = "";
+
                     foreach ($servicioHabitacion->getAll() as $i => $habitacion) {
-                        echo "<td>".$habitacion->getCodigo()."</td>";
-                        echo "<td>".$habitacion->listadoCamasToString()."</td>";
-                        // echo "<td><a href="."camas.php?$habitacion->getId()".">Editar</a></td>";
+                        $str_datos.= "<td>".$habitacion->getCodigo()."</td>";
+                        $str_datos.= "<td><a href=camas.php?habitacion=".$habitacion->getId().">Editar</a></td>";
+                        $str_datos.= "<br>";
                     }
+
+                    echo $str_datos;
                 ?>
             </tr>
         </tbody>

@@ -1,6 +1,6 @@
 <?php
     
-    include_once '../../config/config.php';
+    include_once dirname(__DIR__).'../../config/config.php';
     class DB{
         
         private $connection;
@@ -17,6 +17,8 @@
 
         public function query($query){
             $resultado = mysqli_query($this->connection, $query);
+            if( !$resultado)
+                echo mysqli_error($this->connection)."<br>";
             return $resultado;
         }
 
