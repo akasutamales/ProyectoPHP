@@ -14,7 +14,7 @@
             $resultado = $db->query("SELECT * FROM Camas WHERE habitacion_id = $id_habitacion ");
 
             while( $fila = mysqli_fetch_array($resultado) ){
-                $cama = new Cama($fila['id'],$fila['codigo'],$fila['disponible']);
+                $cama = new Cama($fila['id'],$fila['codigo'],$fila['disponible'],$fila['habitacion_id']);
                 //array_push( arreglo, item a insertar ); 
                 array_push($camas, $cama);
             }
@@ -31,7 +31,7 @@
             $resultado = $db->query("SELECT * FROM Camas WHERE codigo='$codigo' ");
             $cama = null;
             while( $fila = mysqli_fetch_array($resultado) ){
-                $cama = new Cama($fila['id'],$fila['codigo'],$fila['disponible']);
+                $cama = new Cama($fila['id'],$fila['codigo'],$fila['disponible'],$fila['habitacion_id']);
             }
             $db->close();
 
@@ -45,7 +45,7 @@
             $resultado = $db->query("SELECT * FROM Camas WHERE id=$id ");
             $cama = null;
             while( $fila = mysqli_fetch_array($resultado) ){
-                $cama = new Cama($fila['id'],$fila['codigo'],$fila['disponible']);
+                $cama = new Cama($fila['id'],$fila['codigo'],$fila['disponible'],$fila['habitacion_id']);
             }
             $db->close();
 

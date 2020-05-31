@@ -53,7 +53,6 @@
                     echo "<td>" . $cama->getCodigo() . "</td>";
                     if( $cama->getDisponible() == true){
                         echo "<td>Disponible</td>";
-                        header("Location: camas.php");
                     }else{
                         echo "<td>Ocupada</td>";
                     }

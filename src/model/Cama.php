@@ -5,15 +5,17 @@
         private $id;
         private $disponible;
         private $codigo;
+        private $id_habitacion;
 
         /**
          * Class constructor.
          */
-        public function __construct($id, $codigo, $disponible)
+        public function __construct($id, $codigo, $disponible,$id_habitacion)
         {
             $this->id = $id;
             $this->codigo = $codigo;
             $this->disponible = $disponible;
+            $this->id_habitacion = $id_habitacion;
         }
 
         public function getId(){
@@ -38,6 +40,14 @@
         
         public function setDispopnible($disponible){
             $this->disponible = $disponible;
+        }
+       
+        public function getIdHabitacion(){
+            return $this->id_habitacion;
+        }
+        
+        public function setIdHabitacion($id_habitacion){
+            $this->id_habitacion = $id_habitacion;
         }
 
         public function toString(){
