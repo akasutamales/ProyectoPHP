@@ -2,7 +2,7 @@
     include_once dirname(__DIR__).'../model/DB.php';
     include_once dirname(__DIR__).'../model/Equipo.php';
 
-    class CamaService{
+    class EquipoService{
 
         public function getAll(){
             
