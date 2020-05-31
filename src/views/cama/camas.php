@@ -41,6 +41,7 @@
             <tr>
                 <td>Código</td>
                 <td>Disponibilidad</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
@@ -52,9 +53,11 @@
                     echo "<td>" . $cama->getCodigo() . "</td>";
                     if( $cama->getDisponible() == true){
                         echo "<td>Disponible</td>";
+                        header("Location: camas.php");
                     }else{
                         echo "<td>Ocupada</td>";
                     }
+                    echo "<td><a href='edit-cama.php?cama= ".$cama->getId()."' >Editar</a></td>";
                     echo "</tr>";
                 }
             ?>

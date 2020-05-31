@@ -45,7 +45,8 @@
                         
                         $str_datos.= "<tr>";
                         $str_datos.= "<td>".$habitacion->getCodigo()."</td>";
-                        $str_datos.= "<td><a href='../cama/camas.php?habitacion=".$habitacion->getId()."'>Editar</a></td>";
+                        
+                        $str_datos.= "<td><a href='../cama/camas.php?habitacion=". $habitacion->getId()."'>Editar</a></td>";
                         $str_datos.= "</tr>";
                     }
                     echo $str_datos;

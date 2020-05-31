@@ -38,6 +38,20 @@
             return $cama;
         }
 
+        public function findById($id){
+            $db = new DB();
+
+            $db->connect();
+            $resultado = $db->query("SELECT * FROM Camas WHERE id=$id ");
+            $cama = null;
+            while( $fila = mysqli_fetch_array($resultado) ){
+                $cama = new Cama($fila['id'],$fila['codigo'],$fila['disponible']);
+            }
+            $db->close();
+
+            return $cama;
+        }
+
         public function create($disponible,$codigo,$habitacion_id){
         
             $sql = "INSERT INTO Camas(disponible, codigo, habitacion_id) 
@@ -51,10 +65,10 @@
             return $exito;
         }
 
-        public function update($id,$disponible,$codigo,$habitacion_id){
+        public function update($id,$disponible,$codigo){
            
             $sql = "UPDATE Camas
-                    SET disponible = '$disponible', codigo = '$codigo', habitacion_id = '$habitacion_id'
+                    SET disponible = '$disponible', codigo = '$codigo'
                     WHERE id = $id; ";
             
             $db = new DB();

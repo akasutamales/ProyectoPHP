@@ -27,7 +27,7 @@
             $db = new DB();
 
             $db->connect();
-            $resultado = $db->query("SELECT * FROM Habitaciones WHERE Id=$id");
+            $resultado = $db->query("SELECT * FROM Habitaciones WHERE id=$id");
             $habitacion = null;
             while( $fila = mysqli_fetch_array($resultado) ){
                 $habitacion = new Habitacion($fila['id'],$fila['codigo']);
