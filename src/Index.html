@@ -1,13 +1,21 @@
-<!-- Este código se debe borrar cuando se incorpore el inicio de sesión -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu de inicio</title>
+    <title>Gestor hospital</title>
 </head>
 <body>
-    <button><a href="views/habitacion/habitaciones.php">Administrar habitaciones</a></button> 
+    
+    <form method="POST" action="usuario/login.php">
+        <p>Nombre usuario: </p> <input type="text" name="usuario">
+        <p>Contraseña: </p> <input type="password" name="contrasenia">
+        <div>
+            <input type="submit" value="Ingresar">
+            <a href="usuario/registrar.html">Usuario nuevo? Regístrese!</a>
+        </div>
+    </form>
+    
 </body>
 </html>
