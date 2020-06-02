@@ -15,7 +15,7 @@
 
 
         if( $usuario->getRol() == 'Medico'){
-            //header("Location: listado.php");
+            header("Location: ../medico/menu-inicio.php");
         }else{
             header("Location: ../administrador/centro-mensajes.php");
         }

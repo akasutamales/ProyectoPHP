@@ -10,20 +10,20 @@
      `prioridad`     varchar(10) NOT NULL ,
      `fecha_ingreso` datetime NOT NULL ,
      `estadia`       int NOT NULL ,
-     `medico_id`     int NOT NULL ,
      `cama_id`       int NOT NULL ,
+     `medico_id`     int NOT NULL ,
     
     PRIMARY KEY (`id`),
-    KEY `fkIdx_17` (`medico_id`),
-    CONSTRAINT `FK_17` FOREIGN KEY `fkIdx_17` (`medico_id`) REFERENCES `Medicos` (`id`),
     KEY `fkIdx_24` (`cama_id`),
-    CONSTRAINT `FK_24` FOREIGN KEY `fkIdx_24` (`cama_id`) REFERENCES `Camas` (`id`)
+    CONSTRAINT `FK_24` FOREIGN KEY `fkIdx_24` (`cama_id`) REFERENCES `Camas` (`id`),
+    KEY `fkIdx_95` (`medico_id`),
+    CONSTRAINT `FK_95` FOREIGN KEY `fkIdx_95` (`medico_id`) REFERENCES `Usuarios` (`id`)
     );";
 
     if (mysqli_query($con, $sql)) {
         echo "Tabla Pacientes creada correctamente<br>";
     } else {
-        echo "Error en la creacion de Pacientes: " . mysqli_error($con);
+        echo "Error en la creacion de Pacientes: " . mysqli_error($con) . "<br>";
     }
     mysqli_close($con);
 ?>

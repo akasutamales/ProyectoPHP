@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($exito) {
 
         $usuarioService = new UsuarioService();
-        $exito = $usuarioService->register($_POST['Usuario'], 'Medico', $_POST['Contrasenia'], $_POST['Email']);
+        $exito = $usuarioService->register($_POST['Usuario'], 'Medico', $_POST['Contrasenia'], $_POST['Email'],$_POST['Nombre']);
 
         if ($exito) {
             $str_datos .= "<br>El usuario se registró con exito<br>";
@@ -44,11 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <form method="POST" action="<?= $_SERVER['PHP_SELF'] ?>">
 
+        <p>Nombre:</p> <input type="text" name="Nombre">
         <p>Nombre de usuario:</p> <input type="text" name="Usuario">
         <p>Contraseña:</p> <input type="password" name="Contrasenia">
         <p>Confirmar Contraseña:</p> <input type="password" name="ConfirmPass">
-        <p>Email:</p> <input type="text" name="Email">
-        <p>Confirmar email:</p> <input type="text" name="ConfirmEmail">
+        <p>Email:</p> <input type="email" name="Email">
+        <p>Confirmar email:</p> <input type="email" name="ConfirmEmail">
         <div>
             <input type="submit" value="Registrarse!">
         </div>

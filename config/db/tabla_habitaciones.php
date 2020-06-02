@@ -12,7 +12,7 @@
     if (mysqli_query($con, $sql)) {
         echo "Tabla Habitaciones creada correctamente<br>";
     } else {
-        echo "Error en la creacion de Habitaciones: " . mysqli_error($con);
+        echo "Error en la creacion de Habitaciones: " . mysqli_error($con) . "<br>";
     }
     mysqli_close($con);
 ?>

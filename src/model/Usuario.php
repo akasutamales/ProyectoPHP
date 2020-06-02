@@ -6,12 +6,14 @@
         private $rol;
         private $contrasenia;
         private $email;
+        private $nombre;
         
-        public function __construct($usuario, $rol, $contrasenia, $email ){
+        public function __construct($usuario, $rol, $contrasenia, $email , $nombre){
             $this->usuario = $usuario;
             $this->rol = $rol;
             $this->contrasenia = $contrasenia;
             $this->email = $email;
+            $this->nombre = $nombre;
         }
         
         public function getEmail(){
@@ -29,10 +31,15 @@
         public function getContrasenia(){
             return $this->contrasenia;
         }
+        
+        public function getNombre(){
+            return $this->nombre;
+        }
 
         public function toString(){
 
             $str_datos = "";
+            $str_datos.="Nombre: ".$this->getNombre()."<br>";
             $str_datos.="Usuario: ".$this->getUsuario()."<br>";
             $str_datos.="Rol: ".$this->getRol()."<br>";
             $str_datos.="Correo: ".$this->getEmail()."<br>";
