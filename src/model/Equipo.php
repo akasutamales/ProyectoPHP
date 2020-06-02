@@ -3,17 +3,19 @@
     class Equipo{
 
         private $id;
-        private $cantidad;
+        private $disponibles;
+        private $asignados;
         private $codigo;
 
         /**
          * Class constructor.
          */
-        public function __construct($id, $codigo, $cantidad)
+        public function __construct($id, $codigo, $disponibles, $asignados)
         {
             $this->id = $id;
             $this->codigo = $codigo;
-            $this->cantidad = $cantidad;
+            $this->disponibles = $disponibles;
+            $this->asignados = $asignados;
         }
 
         public function getId(){
@@ -32,12 +34,20 @@
             $this->codigo = $codigo;
         }
 
-        public function getCantidad(){
-            return $this->cantidad;
+        public function getDisponibles(){
+            return $this->disponibles;
         }
         
-        public function setCantidad($cantidad){
-            $this->cantidad = $cantidad;
+        public function setDisponibles($disponibles){
+            $this->disponibles = $disponibles;
+        }
+       
+        public function getAsignados(){
+            return $this->asignados;
+        }
+        
+        public function setAsignados($asignados){
+            $this->asignados = $asignados;
         }
        
 
@@ -45,7 +55,8 @@
             $datos = "";
             $datos.= "ID: ". $this->id."<br>";
             $datos.= "Codigo: ". $this->codigo."<br>";
-            $datos.= "Cantidad: ". $this->cantidad."<br>";
+            $datos.= "Disponibles: ". $this->disponibles."<br>";
+            $datos.= "Asignados: ". $this->asignados."<br>";
 
             return $datos;
         }

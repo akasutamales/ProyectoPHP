@@ -14,7 +14,7 @@
             $resultado = $db->query("SELECT * FROM Equipos");
 
             while( $fila = mysqli_fetch_array($resultado) ){
-                $equipo = new Equipo($fila['id'],$fila['codigo'],$fila['cantidad']);
+                $equipo = new Equipo($fila['id'],$fila['codigo'],$fila['disponibles'],$fila['asignados']);
                 //array_push( arreglo, item a insertar ); 
                 array_push($equipos, $equipo);
             }
@@ -45,17 +45,17 @@
             $resultado = $db->query("SELECT * FROM Equipos WHERE id=$id ");
             $equipo = null;
             while( $fila = mysqli_fetch_array($resultado) ){
-                $equipo = new Equipo($fila['id'],$fila['codigo'],$fila['cantidad']);
+                $equipo = new Equipo($fila['id'],$fila['codigo'],$fila['disponibles'],$fila['asignados']);
             }
             $db->close();
 
             return $equipo;
         }
 
-        public function create($codigo,$cantidad){
+        public function create($codigo,$disponibles,$asignados){
         
-            $sql = "INSERT INTO Equipos(codigo, cantidad) 
-            values ('$codigo','$cantidad')";
+            $sql = "INSERT INTO Equipos(codigo, disponibles, asignados) 
+            values ('$codigo',$disponibles,$asignados)";
 
             $db = new DB();
             $db->connect();
@@ -65,10 +65,10 @@
             return $exito;
         }
 
-        public function update($id,$cantidad,$codigo){
+        public function update($id,$codigo,$disponibles,$asignados){
            
             $sql = "UPDATE Equipos
-                    SET cantidad = '$cantidad', codigo = '$codigo'
+                    SET disponibles = $disponibles, codigo = '$codigo', asignados = $asignados
                     WHERE id = $id; ";
             
             $db = new DB();

@@ -3,9 +3,10 @@
     $con = mysqli_connect(HOST_DB, USUARIO_DB, USUARIO_PASS, NOMBRE_DB);
     $sql = "CREATE TABLE `Equipos`
     (
-     `id`       int NOT NULL AUTO_INCREMENT ,
-     `codigo`   varchar(45) NOT NULL ,
-     `cantidad` int NOT NULL ,
+     `id`          int NOT NULL AUTO_INCREMENT ,
+     `codigo`      varchar(45) NOT NULL ,
+     `disponibles` int NOT NULL ,
+     `asignados`   int NOT NULL ,
     
     PRIMARY KEY (`id`)
     );";

@@ -1,27 +1,23 @@
 <?php
 
-    include_once '../logic/UsuarioLogica.php';
-    $usuarioLogica = new UsuarioLogica();
+    include_once '../../services/UsuarioService.php';
+    $usuarioService = new UsuarioService();
     $str_datos = "";
 
     
-    if( $usuarioLogica->login($_POST['usuario'],$_POST['contrasenia']) ){
+    if( $usuarioService->login($_POST['usuario'],$_POST['contrasenia']) ){
         $str_datos.="Credenciales correctas";
-        $usuario = $usuarioLogica->findByUsername($_POST['usuario']);
+        $usuario = $usuarioService->findByUsername($_POST['usuario']);
 
         session_start();
-        if(isset($_SESSION['user'])){
-                $_SESSION['user']= $usuario->getUsuario();
-        }
-        else{
-            $_SESSION['user']= $usuario->getUsuario();
-        }
+        $_SESSION['user']= $usuario->getUsuario();
+        
 
 
-        if( $usuario->getRol() == 'admin'){
-            header("Location: listado.php");
+        if( $usuario->getRol() == 'Medico'){
+            //header("Location: listado.php");
         }else{
-            header("Location: perfil.php");
+            header("Location: ../administrador/centro-mensajes.php");
         }
 
     }else{
