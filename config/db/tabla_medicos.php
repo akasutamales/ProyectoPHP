@@ -3,12 +3,14 @@
     $con = mysqli_connect(HOST_DB, USUARIO_DB, USUARIO_PASS, NOMBRE_DB);
     $sql = "CREATE TABLE `Medicos`
     (
-     `id`          int NOT NULL AUTO_INCREMENT ,
-     `usuario`     varchar(45) NOT NULL ,
-     `contrasenia` varchar(45) NOT NULL ,
-     `email`       varchar(45) NOT NULL ,
+     `id`         int NOT NULL AUTO_INCREMENT ,
+     `email`      varchar(45) NOT NULL ,
+     `nombre`     varchar(45) NOT NULL ,
+     `id_usuario` int NOT NULL ,
     
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    KEY `fkIdx_90` (`id_usuario`),
+    CONSTRAINT `FK_90` FOREIGN KEY `fkIdx_90` (`id_usuario`) REFERENCES `Usuarios` (`id`)
     );";
 
     if (mysqli_query($con, $sql)) {
