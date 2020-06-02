@@ -2,20 +2,26 @@
 
     class Usuario{
 
+        private $id;
         private $usuario;
         private $rol;
         private $contrasenia;
         private $email;
         private $nombre;
         
-        public function __construct($usuario, $rol, $contrasenia, $email , $nombre){
+        public function __construct($id,$usuario, $rol, $contrasenia, $email , $nombre){
             $this->usuario = $usuario;
             $this->rol = $rol;
             $this->contrasenia = $contrasenia;
             $this->email = $email;
             $this->nombre = $nombre;
+            $this->id = $id;
         }
         
+        public function getId(){
+            return $this->id;
+        }
+
         public function getEmail(){
             return $this->email;
         }

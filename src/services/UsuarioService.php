@@ -13,7 +13,7 @@
             $usuarios = [];
                     
             while( $fila = mysqli_fetch_array($resultado) ){
-                    $usuario = new Usuario($fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
+                    $usuario = new Usuario($fila['id'],$fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
                     array_push( $usuarios, $usuario);
             }
 
@@ -30,7 +30,7 @@
             $resultado = $db->query("SELECT * FROM Usuarios WHERE usuario='$nombreUsuario'; ");
             $usuario = null;
             while( $fila = mysqli_fetch_array($resultado) ){
-                $usuario = new Usuario($fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
+                $usuario = new Usuario($fila['id'],$fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
             }
             
             $db->close();
@@ -56,7 +56,7 @@
             $resultado = $db->query("SELECT * FROM Usuarios WHERE usuario='$nombreUsuario'");
             $usuario = null;
             while( $fila = mysqli_fetch_array($resultado) ){
-                $usuario = new Usuario($fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
+                $usuario = new Usuario($fila['id'],$fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
             }
             $db->close();
 

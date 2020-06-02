@@ -13,7 +13,7 @@
         <a href="#contact">Gestionar pacientes</a>
         <a href="#about">Gestionar recursos</a>
         <a href="../equipos/gestionar-equipos.php">Gestionar equipos</a>
-        <a>Cerrar sesion</a>
+        <a href="../../Index.html" >Cerrar sesion</a>
     </div>
 </body>
 </html>

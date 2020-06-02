@@ -1,6 +1,6 @@
 <?php
-    include_once '../../services/HabitacionService.php';
-    $servicioHabitacion = new HabitacionService();
+include_once '../../services/HabitacionService.php';
+$servicioHabitacion = new HabitacionService();
 ?>
 
 <!DOCTYPE html>
@@ -13,20 +13,33 @@
 </head>
 
 <body>
+    <h1>Lista de habitaciones disponibles</h1>
+    <p>Seleccione la habitación en la que estará el paciente:</p>
 
-    <?php
-    $str_datos = "";
+    <table class="table table-light">
 
-    foreach ($servicioHabitacion->getDisponibles() as $i => $habitacion) {
+        <thead class="thead-light">
+            <tr>
+                <th>Codigo de habitación</th>
+            </tr>
+        </thead>
 
-        $str_datos .= "<tr>";
-        $str_datos .= "<td>" . $habitacion->getCodigo() . "</td>";
+        <tbody>
+            <?php
+            $str_datos = "";
 
-        $str_datos .= "<td><a href='../cama/camas.php?habitacion=" . $habitacion->getId() . "'>Editar</a></td>";
-        $str_datos .= "</tr>";
-    }
-    echo $str_datos;
-    ?>
+            foreach ($servicioHabitacion->getDisponibles() as $i => $habitacion) {
+
+                $str_datos .= "<tr>";
+                $str_datos .= "<td> <a href='../cama/cama-medico.php?habitacion="
+                . $habitacion->getId() . "' >" 
+                . $habitacion->getCodigo() . "</a></td>";
+                $str_datos .= "</tr>";
+            }
+            echo $str_datos;
+            ?>
+        </tbody>
+    </table>
 </body>
 
 </html>

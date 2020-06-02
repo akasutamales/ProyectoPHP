@@ -108,7 +108,7 @@
             $datos.= "Diagnostico: ". $this->diagnostico."<br>";
             $datos.= "Prioridad: ". $this->prioridad."<br>";
             $datos.= "Fecha Ingreso: ". $this->fecha_ingreso."<br>";
-            $datos.= "Estadia: ". $this->estada."<br>";
+            $datos.= "Estadia: ". $this->estadia."<br>";
             $datos.= "Medico Asignado: ". $this->medico_id."<br>";
             $datos.= "Cama Asignada: ". $this->cama_id."<br>";
 

@@ -13,6 +13,9 @@
     </head>
     <body>
         
+        <button><a href="agregar.php">Agregar Paciente</a></button>
+
+
         <table>
             <thead>
                 <tr>
@@ -26,7 +29,7 @@
             <tbody text-align="center">
                 <?php
                     $id = 1;
-                    $pacientes = $serviciopaciente->getAll();
+                    $pacientes = $serviciopaciente->getAll2($id);
 
                     foreach ($pacientes as $i => $paciente) {
                         echo "<tr>";

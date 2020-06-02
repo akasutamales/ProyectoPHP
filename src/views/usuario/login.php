@@ -16,6 +16,7 @@
 
         if( $usuario->getRol() == 'Medico'){
             header("Location: ../medico/menu-inicio.php");
+            $_SESSION['medico_id']= $usuario->getId();
         }else{
             header("Location: ../administrador/centro-mensajes.php");
         }

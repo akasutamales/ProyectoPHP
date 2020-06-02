@@ -8,7 +8,7 @@
      `nombre`        varchar(45) NOT NULL ,
      `diagnostico`   varchar(45) NOT NULL ,
      `prioridad`     varchar(10) NOT NULL ,
-     `fecha_ingreso` datetime NOT NULL ,
+     `fecha_ingreso` date NOT NULL ,
      `estadia`       int NOT NULL ,
      `cama_id`       int NOT NULL ,
      `medico_id`     int NOT NULL ,

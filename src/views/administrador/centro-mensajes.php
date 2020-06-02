@@ -11,10 +11,10 @@
     <div class="topnav">
         <a class="active" href="#home">Centro de mensajes</a>
         <a href="../habitacion/habitaciones.php">Gestionar habitaciones</a>
-        <a href="#contact">Gestionar pacientes</a>
+        <a href="../paciente/pacientes.php">Gestionar pacientes</a>
         <a href="#about">Gestionar recursos</a>
         <a href="../equipos/gestionar-equipos.php">Gestionar equipos</a>
-        <a>Cerrar sesion</a>
+        <a href="../../Index.html" >Cerrar sesion</a>
     </div>
 
 

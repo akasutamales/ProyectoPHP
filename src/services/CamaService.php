@@ -23,6 +23,26 @@
             
             return $camas;
         }
+        
+        public function getDisponibles($id_habitacion){
+            
+            $camas = [];
+
+            $db = new DB();
+            $db->connect();
+            
+            $resultado = $db->query("SELECT * FROM Camas WHERE habitacion_id = $id_habitacion AND disponible=1 ");
+
+            while( $fila = mysqli_fetch_array($resultado) ){
+                $cama = new Cama($fila['id'],$fila['codigo'],$fila['disponible'],$fila['habitacion_id']);
+                //array_push( arreglo, item a insertar ); 
+                array_push($camas, $cama);
+            }
+            
+            $db->close();
+            
+            return $camas;
+        }
 
         public function findByCodigo($codigo){
             $db = new DB();
