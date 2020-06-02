@@ -36,7 +36,7 @@ session_start();
                 foreach ($equipoService->getAll() as $i => $equipo) {
                     $str_datos.= "<tr>";
                     $str_datos.= "<td>" . $equipo->getCodigo() . "</td>";
-                    $str_datos.= "<td>" . $equipo->getCantidad() . "</td>";
+                    $str_datos.= "<td>" . $equipo->getDisponibles() . "</td>";
                     $str_datos.= "</tr>";
                 }
             ?>

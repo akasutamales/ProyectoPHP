@@ -1,9 +1,8 @@
 <?php
-    include_once '../DB.php';
-    include_once '../model/Usuario.php';
-    include_once '../logic/PersonaLogica.php';
+    include_once dirname(__DIR__) . '../model/DB.php';
+    include_once dirname(__DIR__) . '../model/Usuario.php';
 
-    class UsuarioLogica{
+    class UsuarioService{
 
         public function getAll(){
             $db = new DB();
@@ -24,6 +23,7 @@
         }
 
         public function login($nombreUsuario, $contrasenia){
+            
             $db = new DB();
 
             $db->connect();
@@ -35,9 +35,17 @@
             
             $db->close();
 
-            $hash = $usuario->getContrasenia();
+            $exito = false;
+            
+            if( $usuario != null ){
+                
+                $hash = $usuario->getContrasenia();
+                $exito = hash_equals($hash, crypt($contrasenia, $hash)) ;
+            }else{
+                echo "No existe el usuario " . $nombreUsuario . "<br> ";
+            }
 
-            return hash_equals($hash, crypt($contrasenia, $hash)) ;
+            return $exito;
                 
         }
 
