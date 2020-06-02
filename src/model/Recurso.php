@@ -55,7 +55,7 @@
             $datos.= "ID: ". $this->id."<br>";
             $datos.= "Nombre: ". $this->nombre."<br>";
             $datos.= "Unidad Medida: ". $this->unidad_medida."<br>";
-            $datos.= "Cantidad: ".this->cantidad."<br>"; 
+            $datos.= "Cantidad: ".$this->cantidad."<br>"; 
 
             return $datos;
         }

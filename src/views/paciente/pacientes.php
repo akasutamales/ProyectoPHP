@@ -12,6 +12,10 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
+        
+        <button><a href="agregar.php">Agregar Paciente</a></button>
+
+
         <table>
             <thead>
                 <tr>
@@ -19,6 +23,7 @@
                     <th>Nombre</th>
                     <th>Cama</th>
                     <th>Medico</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody text-align="center">
@@ -32,9 +37,12 @@
                         echo "<td>".$paciente->getNombre()."</td>";
                         echo "<td>".$paciente->getIdCama()."</td>";
                         echo "<td>".$paciente->getIdMedico()."</td>";
+                        echo "<td><a href='../recurso/peticion.php'> recursos </a></td>";
                         echo "</tr>" ;
+                        
                     }
                 ?>
+
             </tbody>
         </table>
     </body>

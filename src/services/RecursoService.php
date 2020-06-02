@@ -2,7 +2,7 @@
     include_once dirname(__DIR__).'../model/DB.php';
     include_once dirname(__DIR__).'../model/Recurso.php';
 
-    class CamaService{
+    class RecursoService{
 
         public function getAll(){
             
@@ -14,14 +14,14 @@
             $resultado = $db->query("SELECT * FROM Recursos");
 
             while( $fila = mysqli_fetch_array($resultado) ){
-                $recurso = new Cama($fila['id'],$fila['nombre'],$fila['unidad_medida'],$fila['cantidad']);
+                $recurso = new Recurso($fila['id'],$fila['nombre'],$fila['unidad_medida'],$fila['cantidad']);
                 //array_push( arreglo, item a insertar ); 
                 array_push($recursos, $recurso);
             }
             
             $db->close();
             
-            return $camas;
+            return $recursos;
         }
 
         public function findByCodigo($nombre){
