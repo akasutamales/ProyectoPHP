@@ -9,8 +9,7 @@
 <body>
 <div class="topnav">
         <a class="active" href="../habitacion/habitaciones-medico.php">Gestionar pacientes</a>
-        <a href="../habitacion/habitaciones.php">Visualizar pacientes</a>
-        <a href="#contact">Gestionar pacientes</a>
+        <a href="../paciente/pacientes-medico.php">Visualizar pacientes</a>
         <a href="#about">Gestionar recursos</a>
         <a href="../equipos/gestionar-equipos.php">Gestionar equipos</a>
         <a href="../../Index.html" >Cerrar sesion</a>

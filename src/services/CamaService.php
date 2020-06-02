@@ -88,7 +88,7 @@
         public function update($id,$disponible,$codigo){
            
             $sql = "UPDATE Camas
-                    SET disponible = '$disponible', codigo = '$codigo'
+                    SET disponible = $disponible, codigo = '$codigo'
                     WHERE id = $id; ";
             
             $db = new DB();

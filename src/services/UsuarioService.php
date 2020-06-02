@@ -62,6 +62,20 @@
 
             return $usuario;
         }
+        
+        public function findById($id){
+            $db = new DB();
+
+            $db->connect();
+            $resultado = $db->query("SELECT * FROM Usuarios WHERE id=$id");
+            $usuario = null;
+            while( $fila = mysqli_fetch_array($resultado) ){
+                $usuario = new Usuario($fila['id'],$fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
+            }
+            $db->close();
+
+            return $usuario;
+        }
 
 
         public function register($usuario,$rol,$contrasenia,$email, $nombre){
