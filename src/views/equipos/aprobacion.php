@@ -16,7 +16,7 @@
 
     <?php
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $exito = $SolicitudServices->solicitar($_POST['equipo'],$_POST['cantidad'],$_POST['pacienteId'],$_SESSION['medico_id']);
+            $exito = $SolicitudServices->solicitar($_POST['equipo'],$_POST['cantidad'],$_POST['pacienteId'],$_SESSION['medico_id'],$_POST['fecha']);
             if($exito){
                 echo "<br>La solicitud fue realizada de forma exitosa<br>";
             }else{

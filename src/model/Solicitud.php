@@ -14,11 +14,12 @@
         private $equipo_id;
         private $aprobado;
         private $paciente_id;
+        private $fecha;
 
         /**
          * Class constructor.
          */
-        public function __construct($id, $cantidad, $medico_id, $equipo_id, $aprobado, $paciente_id)
+        public function __construct($id, $cantidad, $medico_id, $equipo_id, $aprobado, $paciente_id, $fecha)
         {
             $this->id = $id;
             $this->cantidad = $cantidad;
@@ -26,6 +27,7 @@
             $this->equipo_id = $equipo_id;
             $this->paciente_id = $paciente_id;
             $this->aprobado = $aprobado;
+            $this->fecha = $fecha;
 
         }
 
@@ -74,6 +76,14 @@
         
         public function setAprobado($aprobado){
             $this->aprobado = $aprobado;
+        }
+
+        public function getFecha(){
+            return $this->fecha;
+        }
+        
+        public function setFecha($fecha){
+            $this->fecha = $fecha;
         }
        
 
