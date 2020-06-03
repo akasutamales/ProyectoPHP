@@ -2,6 +2,9 @@
     include_once '../../services/EquipoService.php';
     include_once '../../services/PacienteService.php';
     include_once '../../services/UsuarioService.php';
+    include_once '../../services/SolicitudService.php';
+    
+    $solicitudService = new SolicitudService();
     $equipoServices = new EquipoService();
     $pacienteServices = new PacienteService();
     $medicoServices = new UsuarioService();
@@ -44,22 +47,28 @@
         <input type="submit" value="Solicitar">
     </form>
 
+    <h1>Equipos asignados al paciente</h1>
     <table class="table table-light">
         <thead class="thead-light">
             <tr>
-                <th>Nombre</th>
-                <th>Disponibles</th>
-                <th>Asignados</th>
+                <th>Fecha</th>
+                <th>Equipo</th>
+                <th>Cantidad</th>
+                <th>Estado</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <?php
                 $str_datos = "";
-                foreach ($equipoServices->getAll() as $i => $equipo) {
+                foreach ($solicitudService->getAllByPaciente($paciente->getId()) as $i => $solicitud) {
+                    $equipo = $equipoServices->findById($solicitud->getEquipo());
                     $str_datos.= "<tr>";
+                    $str_datos.= "<td>" . $solicitud->getFecha() . "</td>";
                     $str_datos.= "<td>" . $equipo->getCodigo() . "</td>";
-                    $str_datos.= "<td>" . $equipo->getDisponibles() . "</td>";
-                    $str_datos.= "<td>" . $equipo->getAsignados() . "</td>";
+                    $str_datos.= "<td>" . $solicitud->getCantidad() . "</td>";
+                    $str_datos.= "<td>" . $solicitud->isAprobado() . "</td>";
+                    $str_datos.= "<td><a href='eliminar-asignacion.php?solicitud=" . $solicitud->getId() . "'>Eliminar</a></td>";
                     $str_datos.= "</tr>";
                 }
                 echo $str_datos;

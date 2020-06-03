@@ -11,12 +11,14 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Listado de equipos</h1>
     <table class="table table-light">
         <thead class="thead-light">
             <tr>
                 <th>Código</th>
                 <th>Disponibles</th>
                 <th>Asignados</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -28,7 +30,18 @@
 
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                
+                $equipo = $equipoService->findByCodigo($_POST['codigo']);
+                if($equipo === null){
+                    $exito = $equipoService->create($_POST['codigo'],$_POST['cantidad'],0);
+                }else{
+                    $disponibles = $equipo->getDisponibles() + $_POST['cantidad'];
+                    $exito = $equipoService->update($equipo->getId(),$_POST['codigo'],$disponibles, $equipo->getAsignados()); 
+                }
+                if( $exito ){
+                    echo "<br> El equipo fue agregado de forma exitosa.<br>";
+                }else{
+                    echo "<br> ERROR: No se pudo agregar el equipo.<br>";
+                }
             }
         ?>
 
@@ -40,6 +53,8 @@
                     $str_datos.="<td>".$equipo->getCodigo()."</td>";
                     $str_datos.="<td>".$equipo->getDisponibles()."</td>";
                     $str_datos.="<td>".$equipo->getAsignados()."</td>";
+                    if( $equipo->getAsignados() > 0)
+                        $str_datos.="<td> <a href='cambiar-asignacion.php?equipo=".$equipo->getId()."'>Cambiar asignación</a></td>";
                     $str_datos.="</tr>";
                 }
                 echo $str_datos;

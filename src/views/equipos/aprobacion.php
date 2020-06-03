@@ -23,6 +23,7 @@
                 echo "<br>ERROR: no se pudo completar la solicitud<br>";
             }
         }
+        echo "<br><a href='equipos.php?paciente=".$_POST['pacienteId']."' >Volver al listado de equipos</a><br>";
     ?>
     <a href="../paciente/pacientes-medico.php">Volver al listado de pacientes</a>
 </body>
