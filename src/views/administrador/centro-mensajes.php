@@ -21,6 +21,7 @@
 
     <div class="topnav">
         <a class="active" href="#home">Centro de mensajes</a>
+        <a href="../usuario/listado.php">Gestionar usuarios</a>
         <a href="../habitacion/habitaciones.php">Gestionar habitaciones</a>
         <a href="../paciente/pacientes.php">Gestionar pacientes</a>
         <a href="../recurso/gestionar.php">Gestionar recursos</a>
