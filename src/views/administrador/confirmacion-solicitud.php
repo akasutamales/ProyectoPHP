@@ -35,7 +35,7 @@
             $mensaje = "La solicitud del equipo " . $equipo->getCodigo() . " fue aprobada."
             . "\nLos datos de la solicitud son: " 
             . "\nUnidades asignadas: " . $resultado['asignados']
-            //. "\nUnidades no asignadas: " . $resultado['no_asignados']
+            . "\nUnidades no asignadas: " . $resultado['no_asignados']
             . "\n\nAtentamente, Akasutamales.";
             $mensaje=wordwrap($mensaje,70,"\n");
             if(mail($medico->getEmail(),"Solicitud aprobada",$mensaje)){

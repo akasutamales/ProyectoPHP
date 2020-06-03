@@ -26,6 +26,41 @@
             return $solicitudes;
         }
         
+        public function getPendientes(){
+
+            $sql = "SELECT Solicitudes.id as id, Solicitudes.cantidad as cantidad, 
+            Solicitudes.medico_id as medico_id, Solicitudes.equipo_id as equipo_id, 
+            Solicitudes.aprobado as aprobado,Solicitudes.paciente_id as paciente_id,
+            Solicitudes.fecha as fecha 
+            
+            FROM Solicitudes 
+            INNER JOIN Pacientes ON Solicitudes.paciente_id=Pacientes.id
+            WHERE aprobado=0
+            ORDER BY case 
+            when UPPER(Pacientes.prioridad)='ALTA' then 1 
+            when UPPER(Pacientes.prioridad)='MEDIA' then 2 
+            when UPPER(Pacientes.prioridad)='BAJA' then 3
+            else 4
+            end ASC, fecha ASC;";
+
+            $solicitudes = [];
+
+            $db = new DB();
+            $db->connect();
+            
+            $resultado = $db->query($sql);
+
+            while( $fila = mysqli_fetch_array($resultado) ){
+                $solicitud = new Solicitud($fila['id'],$fila['cantidad'],$fila['medico_id'],$fila['equipo_id'],$fila['aprobado'],$fila['paciente_id'],$fila['fecha']);
+                //array_push( arreglo, item a insertar ); 
+                array_push($solicitudes, $solicitud);
+            }
+            
+            $db->close();
+            
+            return $solicitudes;
+        }
+        
         public function getAllByEquipo($id_equipo){
             
             $solicitudes = [];
@@ -108,15 +143,23 @@
         }
 
         public function delete($id){
-            $sql = "DELETE FROM Solicitudes where id=$id;";
+            $solicitud = $this->findById($id);
+            $exito = true;
             
-            $db = new DB();
-            
-            $db->connect();
+            if( $solicitud->isAprobado() == 1){
+                $servicioEquipos = new EquipoService();
+                $equipo = $servicioEquipos->findById($solicitud->getEquipo());
+                $exito = $servicioEquipos->update($equipo->getId(),$equipo->getCodigo(),$equipo->getDisponibles()+$solicitud->getCantidad(),$equipo->getAsignados()-$solicitud->getCantidad());
+            }
 
-            $exito = $db->query($sql);
+            if( $exito ){
 
-            $db->close();
+                $sql = "DELETE FROM Solicitudes where id=$id;";
+                $db = new DB();
+                $db->connect();
+                $exito = $db->query($sql);
+                $db->close();
+            }
 
             return $exito;
         }
@@ -185,6 +228,7 @@
             $resultado['exito'] = true;
             
             $resultado['asignados'] = 0;
+            $resultado['no_asignados'] = 0;
             $cantidadDisponibles = 0;
             $cantidadAsignados = 0;
                 
@@ -194,7 +238,10 @@
             }else{
                 $cantidadDisponibles = $equipo->getDisponibles();
                 $cantidadAsignados = $equipo->getAsignados();
-                $resultado['asignados'] = $solicitud->getCantidad();
+                if( $cantidadDisponibles < $solicitud->getCantidad() ){
+                    $resultado['no_asignados'] = $solicitud->getCantidad() - $cantidadDisponibles;
+                }
+                $resultado['asignados'] = $solicitud->getCantidad() - $resultado['no_asignados'];
                 $cantidadAsignados += $resultado['asignados'];
                 $cantidadDisponibles -= $resultado['asignados'];
             }
@@ -289,6 +336,10 @@
                 $this->create($cantidad,$destino->getIdMedico(),$equipo_id,1,$pacienteDestino,$fecha);
             }
             return $exito;
+        }
+
+        public function rechazar($solicitud_id){
+            return $this->update($solicitud_id,0,-1);
         }
 
     }

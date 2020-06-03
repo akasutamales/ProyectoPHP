@@ -6,7 +6,7 @@
      `id`          int NOT NULL AUTO_INCREMENT ,
      `cantidad`    int NOT NULL ,
      `equipo_id`   int NOT NULL ,
-     `aprobado`    bit NOT NULL ,
+     `aprobado`    int NOT NULL ,
      `paciente_id` int NOT NULL ,
      `medico_id`   int NOT NULL ,
      `fecha` date NOT NULL ,

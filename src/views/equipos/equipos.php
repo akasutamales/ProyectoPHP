@@ -17,7 +17,7 @@
     $medico = $medicoServices->findById($_SESSION['medico_id']);
     
     date_default_timezone_set('America/Bogota');
-    $fecha = date('m/d/Y h:i:s a', time());
+    $fecha = date('Y-m-d H:i:s', time());
 
 ?>
 

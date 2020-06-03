@@ -34,6 +34,6 @@
         echo $str_datos;
     ?>
 
-    <a href="../medico/menu-inicio.php">Volver</a>
+    <a href="pacientes-medico.php">Volver</a>
 </body>
 </html>

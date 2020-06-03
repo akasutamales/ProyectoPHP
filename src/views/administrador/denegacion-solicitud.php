@@ -28,7 +28,7 @@
 </head>
 <body>
     <?php
-
+        $solicitudService->rechazar($solicitud->getId());
         if( true ){ // TODO
 
             $mensaje = "La solicitud del equipo " . $equipo->getCodigo() . " fue rechazada."

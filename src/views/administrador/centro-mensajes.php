@@ -43,12 +43,18 @@
         </thead>
         <tbody>
             <?php
-                $solicitudes = $solicitudService->getAll();
+                $solicitudes = $solicitudService->getPendientes();
                 $str_datos = "";
+                $cantidad = [];
+                
                 foreach ($solicitudes as $i => $solicitud) {
                     $paciente = $pacienteService->findById( $solicitud->getPaciente());
                     $medico = $medicoService->findById( $solicitud->getMedico());
                     $equipo = $equipoService->findById( $solicitud->getEquipo());
+
+                    if( !isset( $cantidad[$equipo->getCodigo()] ) ){
+                        $cantidad[$equipo->getCodigo()]=$equipo->getDisponibles();
+                    }
                     $str_datos.="<tr>";
                     $str_datos.="<td>". $paciente->getPrioridad() ."</td>";
                     $str_datos.="<td>". $solicitud->getFecha() ."</td>";
@@ -57,8 +63,11 @@
                     $str_datos.="<td>". $equipo->getCodigo() ."</td>";
                     $str_datos.="<td>". $solicitud->getCantidad() ."</td>";
                     
-                    $str_datos.="<td><a href='confirmacion-solicitud.php?solicitud=".$solicitud->getId()."' >Aprobar</a></td>";
-
+                    if( $cantidad[$equipo->getCodigo()] > 0){
+                        $str_datos.="<td><a href='confirmacion-solicitud.php?solicitud=".$solicitud->getId()."' >Aprobar</a></td>";
+                        $cantidad[$equipo->getCodigo()]-=$solicitud->getCantidad();
+                    }
+                    
                     $str_datos.="<td><a href='denegacion-solicitud.php?solicitud=".$solicitud->getId()."' >Rechazar</a></td>";
                     
                     $str_datos.="</tr>";
