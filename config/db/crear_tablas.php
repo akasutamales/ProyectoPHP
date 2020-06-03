@@ -1,7 +1,6 @@
 <?php
 
     include (__DIR__).'./tabla_usuarios.php';
-    include (__DIR__).'./tabla_medicos.php';
     include (__DIR__).'./tabla_habitaciones.php';
     include (__DIR__).'./tabla_camas.php';
     include (__DIR__).'./tabla_pacientes.php';

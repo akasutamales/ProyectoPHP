@@ -15,13 +15,15 @@
 
 
         if( $usuario->getRol() == 'Medico'){
-            //header("Location: listado.php");
+            header("Location: ../paciente/pacientes-medico.php");
+            $_SESSION['medico_id']= $usuario->getId();
         }else{
             header("Location: ../administrador/centro-mensajes.php");
         }
 
     }else{
         $str_datos.="Credenciales incorrectas";
+        $str_datos.="<br><a href='../../Index.html'>Volver</a>";
     }
 
     echo $str_datos;

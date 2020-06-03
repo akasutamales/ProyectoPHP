@@ -8,6 +8,7 @@
      `contrasenia` varchar(255) NOT NULL ,
      `email`       varchar(45) NOT NULL ,
      `rol`         varchar(45) NOT NULL ,
+     `nombre`      varchar(45) NOT NULL ,
     
     PRIMARY KEY (`id`)
     );";
@@ -15,7 +16,7 @@
     if (mysqli_query($con, $sql)) {
         echo "Tabla Usuarios creada correctamente<br>";
     } else {
-        echo "Error en la creacion de Usuarios: " . mysqli_error($con);
+        echo "Error en la creacion de Usuarios: " . mysqli_error($con) . "<br>";
     }
     mysqli_close($con);
 ?>

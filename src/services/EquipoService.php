@@ -28,14 +28,14 @@
             $db = new DB();
 
             $db->connect();
-            $resultado = $db->query("SELECT * FROM Camas WHERE codigo='$codigo' ");
-            $cama = null;
+            $resultado = $db->query("SELECT * FROM Equipos WHERE codigo='$codigo' ");
+            $equipo = null;
             while( $fila = mysqli_fetch_array($resultado) ){
-                $cama = new Cama($fila['id'],$fila['codigo'],$fila['disponible'],$fila['habitacion_id']);
+                $equipo = new Equipo($fila['id'],$fila['codigo'],$fila['disponibles'],$fila['asignados']);    
             }
             $db->close();
 
-            return $cama;
+            return $equipo;
         }
 
         public function findById($id){
@@ -50,6 +50,26 @@
             $db->close();
 
             return $equipo;
+        }
+
+        public function getDisponibles(){
+            
+            $equipos = [];
+
+            $db = new DB();
+            $db->connect();
+            
+            $resultado = $db->query("SELECT * FROM Equipos WHERE disponibles > 0");
+
+            while( $fila = mysqli_fetch_array($resultado) ){
+                $equipo = new Equipo($fila['id'],$fila['codigo'],$fila['disponibles'],$fila['asignados']);
+                //array_push( arreglo, item a insertar ); 
+                array_push($equipos, $equipo);
+            }
+            
+            $db->close();
+            
+            return $equipos;
         }
 
         public function create($codigo,$disponibles,$asignados){

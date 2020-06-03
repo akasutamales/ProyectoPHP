@@ -13,7 +13,7 @@
             $usuarios = [];
                     
             while( $fila = mysqli_fetch_array($resultado) ){
-                    $usuario = new Usuario($fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email']);
+                    $usuario = new Usuario($fila['id'],$fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
                     array_push( $usuarios, $usuario);
             }
 
@@ -30,7 +30,7 @@
             $resultado = $db->query("SELECT * FROM Usuarios WHERE usuario='$nombreUsuario'; ");
             $usuario = null;
             while( $fila = mysqli_fetch_array($resultado) ){
-                $usuario = new Usuario($fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email']);
+                $usuario = new Usuario($fila['id'],$fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
             }
             
             $db->close();
@@ -56,7 +56,21 @@
             $resultado = $db->query("SELECT * FROM Usuarios WHERE usuario='$nombreUsuario'");
             $usuario = null;
             while( $fila = mysqli_fetch_array($resultado) ){
-                $usuario = new Usuario($fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email']);
+                $usuario = new Usuario($fila['id'],$fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
+            }
+            $db->close();
+
+            return $usuario;
+        }
+        
+        public function findById($id){
+            $db = new DB();
+
+            $db->connect();
+            $resultado = $db->query("SELECT * FROM Usuarios WHERE id=$id");
+            $usuario = null;
+            while( $fila = mysqli_fetch_array($resultado) ){
+                $usuario = new Usuario($fila['id'],$fila['usuario'],$fila['rol'],$fila['contrasenia'],$fila['email'], $fila['nombre']);
             }
             $db->close();
 
@@ -64,7 +78,7 @@
         }
 
 
-        public function register($usuario,$rol,$contrasenia,$email){
+        public function register($usuario,$rol,$contrasenia,$email, $nombre){
 
             $user = $this->findByUsername($usuario);
             
@@ -85,8 +99,8 @@
             }
             
             if( $exito ){
-                $sql = "INSERT INTO Usuarios(usuario, rol, contrasenia , email) 
-                values ('$usuario','$rol', '$contrasenia','$email')";
+                $sql = "INSERT INTO Usuarios(usuario, rol, contrasenia , email, nombre) 
+                values ('$usuario','$rol', '$contrasenia','$email', '$nombre')";
     
                 $db = new DB();            
                 $db->connect();

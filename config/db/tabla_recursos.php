@@ -14,7 +14,7 @@
     if (mysqli_query($con, $sql)) {
         echo "Tabla Recursos creada correctamente<br>";
     } else {
-        echo "Error en la creacion de Recursos: " . mysqli_error($con);
+        echo "Error en la creacion de Recursos: " . mysqli_error($con) . "<br>";
     }
     mysqli_close($con);
 ?>

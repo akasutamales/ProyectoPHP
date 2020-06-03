@@ -23,6 +23,24 @@
             return $habitaciones;
         }
 
+        public function getDisponibles(){
+            $habitaciones = [];
+
+            $db = new DB();
+            $db->connect();
+            
+            $resultado = $db->query("SELECT DISTINCT habitacion_id FROM Camas WHERE disponible=1");
+
+            while( $fila = mysqli_fetch_array($resultado) ){
+                $habitacion = $this->findById($fila['habitacion_id']); 
+                array_push($habitaciones, $habitacion);
+            }
+            
+            $db->close();
+            
+            return $habitaciones;
+        }
+
         public function findById($id){
             $db = new DB();
 

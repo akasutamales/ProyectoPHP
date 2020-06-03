@@ -16,7 +16,7 @@
     if (mysqli_query($con, $sql)) {
         echo "Tabla Camas creada correctamente<br>";
     } else {
-        echo "Error en la creacion de Camas: " . mysqli_error($con);
+        echo "Error en la creacion de Camas: " . mysqli_error($con) . "<br>";
     }
     mysqli_close($con);
 ?>
