@@ -4,6 +4,9 @@ Gestor de un hospital implementado en PHP para la materia de Programación en la
 ## Estructura del proyecto
 * **config**: archivos de configuración de la base de datos en MySQL y declaración de constantes
 * **src**: codigo fuente de la aplicación, la aplicación posee una arquitectura de N-Capas
+* **ImágenesCorreo**: Evidencia de los correos enviados
+* **vendor (opcional)**: Librería PHPMailer para enviar el correo (este método es alternativo y se encuentra comentado en el código)
+* **dump_midb.sql**: Dump con datos de prueba. El administrador por defecto es user=admin password=123.
 
 ## Modelo de la base de datos
 La siguiente imagen muestra el esquema de la base de datos relacional empleada:
