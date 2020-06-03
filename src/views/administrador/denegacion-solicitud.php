@@ -80,5 +80,6 @@
             echo "ERROR: no se pudo procesar la solicitud<br>";
         }
     ?>
+    <a href="../administrador/centro-mensajes.php">Volver al centro de mensajes</a>
 </body>
 </html>

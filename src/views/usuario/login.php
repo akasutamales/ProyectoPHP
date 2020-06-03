@@ -23,6 +23,7 @@
 
     }else{
         $str_datos.="Credenciales incorrectas";
+        $str_datos.="<br><a href='../../Index.html'>Volver</a>";
     }
 
     echo $str_datos;

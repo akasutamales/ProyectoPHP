@@ -7,6 +7,7 @@ $str_datos = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $exito = true;
+
     if ($_POST['Contrasenia'] !== $_POST['ConfirmPass']) {
         $str_datos .= "<br>ERROR: Las contraseñas no coinciden<br>";
         $exito = false;
@@ -14,6 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($_POST['Email'] !== $_POST['ConfirmEmail']) {
         $str_datos .= "<br>ERROR: Los correos no coinciden<br>";
+        $exito = false;
+    }
+
+    if (!filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL) ){
+        $str_datos.="La estructura del correo es inválida debe ser NOMBRE@DOMINIO <br>";
         $exito = false;
     }
 

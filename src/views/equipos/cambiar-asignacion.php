@@ -65,7 +65,6 @@ $equipo = null;
                 <th>Paciente</th>
                 <th>Prioridad</th>
                 <th>Cantidad asignada</th>
-                <th>Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -76,12 +75,13 @@ $equipo = null;
                 echo "<td>" . $paciente->getNombre() . "</td>";
                 echo "<td>" . $paciente->getPrioridad() . "</td>";
                 echo "<td>" . $solicitud->getCantidad() . "</td>";
-                echo "<td>" . $solicitud->isAprobado() . "</td>";
+                //echo "<td>" . $solicitud->isAprobado() . "</td>";
                 echo "</tr>";
             }
             ?>
         </tbody>
     </table>
+    <a href="gestionar-equipos.php">Volver al listado de equipos</a>
 </body>
 
 </html>

@@ -248,7 +248,7 @@
 
             if( $resultado['exito'] ){
                 $resultado['exito'] = $equipoService->update($equipo->getId(),$equipo->getCodigo(),$cantidadDisponibles,$cantidadAsignados);
-                $resultado['exito'] = $this->update($solicitud->getId(),$solicitud->getCantidad(), 1);
+                $resultado['exito'] = $this->update($solicitud->getId(),$resultado['asignados'], 1);
             }
 
 
@@ -331,7 +331,7 @@
                 }
                 
                 date_default_timezone_set('America/Bogota');
-                $fecha = date('m/d/Y h:i:s a', time());
+                $fecha = date('Y-m-d H:i:s', time());
                 
                 $this->create($cantidad,$destino->getIdMedico(),$equipo_id,1,$pacienteDestino,$fecha);
             }

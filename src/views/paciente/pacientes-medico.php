@@ -24,7 +24,7 @@
     <div class="topnav">
         <a class="active" href="../paciente/pacientes-medico.php">Visualizar pacientes</a>
         <a href="../habitacion/habitaciones-medico.php">Gestionar pacientes</a>
-        <a href="../../Index.html" >Cerrar sesion</a>
+        <a href="../usuario/logout.php" >Cerrar sesion</a>
     </div>
         
     <h1>Listado de mis pacientes</h1>

@@ -8,4 +8,4 @@ Gestor de un hospital implementado en PHP para la materia de Programación en la
 ## Modelo de la base de datos
 La siguiente imagen muestra el esquema de la base de datos relacional empleada:
 
-![Esquema de la Base de Datos](ModeloDB.png)
+![Esquema de la Base de Datos](Modelp.png)

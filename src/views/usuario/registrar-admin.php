@@ -16,6 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $str_datos .= "<br>ERROR: Los correos no coinciden<br>";
         $exito = false;
     }
+    if (!filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL) ){
+        $str_datos.="La estructura del correo es inválida debe ser NOMBRE@DOMINIO <br>";
+        $exito = false;
+    }
 
     if ($exito) {
 

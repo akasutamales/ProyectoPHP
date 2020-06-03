@@ -9,7 +9,7 @@
      `aprobado`    int NOT NULL ,
      `paciente_id` int NOT NULL ,
      `medico_id`   int NOT NULL ,
-     `fecha` date NOT NULL ,
+     `fecha` datetime NOT NULL ,
     
     PRIMARY KEY (`id`),
     KEY `fkIdx_75` (`equipo_id`),

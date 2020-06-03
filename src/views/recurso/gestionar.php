@@ -9,8 +9,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../../resources/barra-navegacion.css">
+
 </head>
 <body>
+<div class="topnav">
+        <a href="../administrador/centro-mensajes.php">Centro de mensajes</a>
+        <a href="../usuario/listado.php">Gestionar usuarios</a>
+        <a href="../habitacion/habitaciones.php">Gestionar habitaciones</a>
+        <a href="../paciente/pacientes.php">Gestionar pacientes</a>
+        <a class="active" href="../recurso/gestionar.php">Gestionar recursos</a>
+        <a href="../equipos/gestionar-equipos.php">Gestionar equipos</a>
+        <a href="../usuario/logout.php" >Cerrar sesion</a>
+</div>
     <h1>Lista de recursos</h1>
 
     <form method="POST" action="<?=$_SERVER['PHP_SELF'];?>">

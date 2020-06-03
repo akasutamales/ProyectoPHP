@@ -20,13 +20,13 @@
 <body>
 
     <div class="topnav">
-        <a class="active" href="#home">Centro de mensajes</a>
+        <a class="active" href="../administrador/centro-mensajes.php">Centro de mensajes</a>
         <a href="../usuario/listado.php">Gestionar usuarios</a>
         <a href="../habitacion/habitaciones.php">Gestionar habitaciones</a>
         <a href="../paciente/pacientes.php">Gestionar pacientes</a>
         <a href="../recurso/gestionar.php">Gestionar recursos</a>
         <a href="../equipos/gestionar-equipos.php">Gestionar equipos</a>
-        <a href="../../Index.html" >Cerrar sesion</a>
+        <a href="../usuario/logout.php" >Cerrar sesion</a>
     </div>
 
     <table class="table table-light">

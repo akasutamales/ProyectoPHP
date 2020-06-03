@@ -75,5 +75,6 @@
             ?>
         </tbody>
     </table>
+    <a href="../paciente/pacientes-medico.php">Volver al listado de pacientes</a>
 </body>
 </html>

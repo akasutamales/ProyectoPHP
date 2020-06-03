@@ -54,6 +54,8 @@ parse_str($parts['query'], $params);
             ?>
         </tbody>
     </table>
+    
+    <a href="../habitacion/habitaciones-medico.php">Volver</a>
 </body>
 
 </html>
