@@ -28,6 +28,7 @@
                     <th>Cama</th>
                     <th>Medico</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody text-align="center">

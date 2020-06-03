@@ -44,7 +44,8 @@
                         echo "<td>".$paciente->getPrioridad()."</td>";
                         echo "<td>".$habitacion->getCodigo()."</td>";
                         echo "<td>".$cama->getCodigo()."</td>";
-                        echo "<td><a href='../recurso/peticion.php'> Equipos </a></td>";
+                        echo "<td><a href='#'> Equipos </a></td>";
+                        echo "<td><a href='../recurso/peticion.php?paciente=". $paciente->getId() . " '> Solicitar recursos </a></td>";
                         echo "</tr>" ;
                         
                     }
