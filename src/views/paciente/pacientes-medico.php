@@ -12,14 +12,22 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <title>Pacientes</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="../../resources/barra-navegacion.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Listado de mis pacientes</h1>
+
+    <div class="topnav">
+        <a class="active" href="../paciente/pacientes-medico.php">Visualizar pacientes</a>
+        <a href="../habitacion/habitaciones-medico.php">Gestionar pacientes</a>
+        <a href="../../Index.html" >Cerrar sesion</a>
+    </div>
+        
+    <h1>Listado de mis pacientes</h1>
         <table>
             <thead>
                 <tr>
@@ -44,8 +52,8 @@
                         echo "<td>".$paciente->getPrioridad()."</td>";
                         echo "<td>".$habitacion->getCodigo()."</td>";
                         echo "<td>".$cama->getCodigo()."</td>";
-                        echo "<td><a href='#'> Equipos </a></td>";
-                        echo "<td><a href='../recurso/peticion.php?paciente=". $paciente->getId() . " '> Solicitar recursos </a></td>";
+                        echo "<td><a href='../equipos/equipos.php?paciente=". $paciente->getId() . "'> Equipos </a></td>";
+                        echo "<td><a href='../recurso/peticion.php?paciente=". $paciente->getId(). " '> Solicitar recursos </a></td>";
                         echo "</tr>" ;
                         
                     }

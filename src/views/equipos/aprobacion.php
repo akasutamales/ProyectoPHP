@@ -1,6 +1,9 @@
 <?php
-    include_once '../../services/RecursoService.php';
-    $recursoServices = new RecursoService();
+    include_once '../../services/EquipoService.php';
+    include_once '../../services/SolicitudService.php';
+    $EquipoServices = new EquipoService();
+    $SolicitudServices = new SolicitudService();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,16 +16,11 @@
 
     <?php
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $exito = $recursoServices->solicitar($_POST['item'],$_POST['cantidad']);
-            $recurso = $recursoServices->findByNombre($_POST['item']);
+            $exito = $SolicitudServices->solicitar($_POST['equipo'],$_POST['cantidad'],$_POST['pacienteId'],$_SESSION['medico_id']);
             if($exito){
-                echo "<br>El recurso fue solicitado de forma exitosa<br>";
+                echo "<br>La solicitud fue realizada de forma exitosa<br>";
             }else{
                 echo "<br>ERROR: no se pudo completar la solicitud<br>";
-            }
-            if( $recurso != null){
-                echo "Los datos del recurso son: <br>";
-                echo $recurso->toString();
             }
         }
     ?>
